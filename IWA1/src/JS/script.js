@@ -32,8 +32,5 @@ const addHandler = () => {
 
 };
 
-
-
-
 add.addEventListener('click', addHandler)
 subtract.addEventListener('click', subtractHandler)
