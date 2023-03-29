@@ -12,17 +12,17 @@ import {role as roleC } from "./alex.js";
 
 
 
-const display1 = firstnameA + " " + surnameA + " " +  roleA;
+const display1 = firstnameA + " " + surnameA + " " + "("+roleA+")";
 
 document.querySelector('#nwabisa').innerText = display1
 
-const display2 = firstnameB + " " + surnameB + " " + roleB;
+const display2 = firstnameB + " " + surnameB + " " + "("+roleB+")";
 
   document.querySelector('#johannes').innerText = display2
 
-  const display3 = firstnameC + " " + surnameC + " " +  roleC;
+  const display3 = firstnameC + " " + surnameC + " " + "("+roleC+")";
 
   document.querySelector('#alex').innerText = display3
 
- console.log('Roles:', roleA, roleB, roleC)
+ console.log('Roles:',[roleA, roleB, roleC])
  
