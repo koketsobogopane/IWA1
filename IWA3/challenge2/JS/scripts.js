@@ -1,18 +1,28 @@
-//import { firstname  } from "./nwabisa";
-// import { surname } from "./nwabisa";
-// import { role } from "./nwabisa";
+ import { firstname as firstnameA } from "./nwabisa.js";
+ import { surname as surnameA } from "./nwabisa.js";
+ import { role as roleA } from "./nwabisa.js";
 
-// import { firstnameB  } from "./johannes";
-// import { surnameB } from "./johannes";
-// import { roleB } from "./johannes";
+import { firstname as firstnameB  } from "./johannes.js";
+import {surname as surnameB } from "./johannes.js";
+import { role as roleB } from "./johannes.js";
 
-// import { firstnameC  } from "./alex";
-// import { surnameC } from "./alex";
-// import { roleC } from "./alex";
+import {firstname as firstnameC  } from "./alex.js";
+import {surname as surnameC } from "./alex.js";
+import {role as roleC } from "./alex.js";
 
+
+
+const display1 = firstnameA + " " + surnameA + " " +  roleA;
+
+document.querySelector('#nwabisa').innerText = display1
+
+const display2 = firstnameB + " " + surnameB + " " + roleB;
+
+  document.querySelector('#johannes').innerText = display2
+
+  const display3 = firstnameC + " " + surnameC + " " +  roleC;
+
+  document.querySelector('#alex').innerText = display3
+
+ console.log('Roles:', roleA, roleB, roleC)
  
-
- //const display = firstname+ surname +  role;
-// document.querySelector('#johannes', '#nwabisa', "#alex").innerText = display
-
-// console.log('Roles:', nwabisa.role, johannes.role, alex.role)
