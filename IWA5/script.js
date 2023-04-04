@@ -1,10 +1,10 @@
 FREE_WARNING = 'Free shipping only applies to single customer orders'
 BANNED_WARNING = 'Unfortunately we do not ship to your country of residence'
 NONE_SELECTED = 0
-const customers = 1
-const clocation = "RSA"
+const customers = 2
+const clocation = "NAM"
 let currency = null
-let shipping = null
+let shipping ;
 
 if (clocation === "RSA" || clocation === "NAM") { 
     if ( clocation=== "RSA" ) {
@@ -30,6 +30,7 @@ let pens = 5 * NONE_SELECTED
 let total = shoes + toys + shirts + batteries + pens +shirts  
 
 
+
 if ( total > 1000 && (clocation === "RSA" || clocation === "NAM") ) {
 		shipping = 0
         if (shipping === 0 && customers !== 1) {
@@ -52,8 +53,7 @@ if ( total > 1000 && (clocation === "RSA" || clocation === "NAM") ) {
     }
 }
 
-
- clocation === 'NK' ? console.log(BANNED_WARNING) : console.log('price',currency, shoes + toys + batteries + pens + shirts + shipping)
+ clocation === 'NK' ? console.log(BANNED_WARNING) : console.log('price',currency, total + shipping)
 
 
 
