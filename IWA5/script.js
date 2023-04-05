@@ -52,6 +52,27 @@ if ( total > 1000 && (clocation === "RSA" || clocation === "NAM") ) {
         console.log ("Shipping is free!!")
     }
 }
+if (location === 'RSA') { 
+    currency = 'R'
+    shipping = 400
+} else {
+    currency = '$'
+    shipping = location === 'NAM' ? 600 : 800
+}
+// const total = shoes + batteries + pens + shirts + toys 
+// const isFreeLocal = currency === 'R' && total > 1000 
+// const isFreeInt = currency === '$' && total > 60 
+// const isFree = isFreeLocal || isFreeInt 
+// const isFreeWarning = isFree && customers !== 1 
+// const totalWithShipping = total + shipping 
+// const isBanned = location === 'NK' 
+
+// if (isFreeWarning) {console.log(FREE_WARNING)} 
+// if (isFree && !isFreeWarning ) {shipping = 0} 
+
+// const withShipping = total + shipping
+
+// console.log(isBanned ? BANNED_WARNING : 'Price: ' + currency + totalWithShipping)
 
  clocation === 'NK' ? console.log(BANNED_WARNING) : console.log('price',currency, total + shipping)
 

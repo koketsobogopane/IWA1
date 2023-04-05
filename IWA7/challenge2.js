@@ -1,4 +1,7 @@
 const nickname= "Timmy";
 const firstname = "Timothy";
+const message1  = `Good Morning, ${nickname || firstname } !`
+const message2 = "Good Morning!"
+const outputMessage = nickname === "" && firstname === ""? message2 : message1
 
-console.log(`Good Morning, ${nickname || firstname || "Sir"} !`)
+console.log(outputMessage)

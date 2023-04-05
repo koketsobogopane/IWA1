@@ -10,3 +10,5 @@ const secondaryValid = number.test (secondaryPhone)
 console.log('Primary phone is valid numerical string:', primaryValid)
 console.log('Secondary phone is valid numerical string:', secondaryValid )
 
+// const primaryValid = !Number.isNaN(parseInt(primaryPhone))
+// const secondaryValid = !Number.isNaN(parseInt(secondaryPhone))
