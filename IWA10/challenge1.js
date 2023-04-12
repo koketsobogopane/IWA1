@@ -65,7 +65,7 @@ if (isEarlier) {copiedDate = correctDate}
 console.log('New date is earlier:', isEarlier,)
 console.log('ID change:', holidays[6].id === copiedId ? false : copiedId )
 console.log('Name change:', holidays[6].name === copiedName ? false : copiedName )
-console.log('Date change:', holidays[6].date === copiedDate ? false : copiedDate )
+console.log('Date change:', holidays[6].date === copiedDate ? false : copiedDate.toLocaleDateString('en-GB') )
 
 const firstHolidayTimestamp = Math.min(
     new Date (holidays[0].date).getTime(),
@@ -96,7 +96,7 @@ const lastHolidayTimestamp = Math.max(
  const firstMonth = new Date (firstHolidayTimestamp).getMonth ()+1
  const lastDay = new Date (lastHolidayTimestamp).getDate ()
  const lastMonth = new Date (lastHolidayTimestamp).getMonth ()+1
- console.log(`${"0"+firstDay}/${"0"+(firstMonth)}/${currentYear}`)
+ console.log(`${"0"+firstDay}/${"0"+firstMonth}/${currentYear}`)
  console.log(`${lastDay}/${lastMonth}/${currentYear}`)
 const obj = Object.keys(holidays)
 const randomHoliday = Math.floor(Math.random () * obj.length)
