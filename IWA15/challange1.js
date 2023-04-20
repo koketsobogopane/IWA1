@@ -1,4 +1,11 @@
 // scripts.js
+/**
+ * 
+ *Edit only the code between the two comment lines
+ *The code must compare the last value of each provided array
+ *The largest value must be removed from it’s array
+ *The largest value must be added to the result array
+ */
 
 const data = {
 	lists: [
@@ -10,24 +17,32 @@ const data = {
 
 // Only edit below
 
-const { first = 1 } = data.first || {}
-const { second = 1 } = data.second || {}
-const { third = 1 } = data.third || {}
+const first = data.lists[0][1]
+
+const second = data.lists[1][1]
+
+const third = data.lists[2][1]
+
 
 const result = []
 
 const extractBiggest = () => {
-	if (first[-1] > second[-1]) {
-		return first
-	}
+	if (first[first.length - 1] > second[second.length - 1] && first[first.length - 1] > third[third.length -1] ) {
+         return first.pop() } 
 
-	if (third[-1] < 1) {
-		return second
-	}
-	
-	return third
-}
+     if (second[second.length -1] > first[first.length -1]&& second[second.length -1] > third[third.length -1]){
+        return second.pop()
+     }
 
+     if (first[first.length - 1] === undefined ){
+       if (second[second.length -1] > third[third.length -1]){return second.pop()}
+       if (third[third.length -1] > second[second.length -1]){return third.pop()}  
+       if (third[third.length -1] === undefined){return second.pop()}  
+    } 
+
+    if (second[second.length -1] === undefined){return third.pop()} 
+     
+     }
 // Only edit above
 
 result.push(extractBiggest())
