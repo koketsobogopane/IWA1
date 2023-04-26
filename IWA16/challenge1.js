@@ -79,7 +79,9 @@ const MONTHS = [
   // This function takes an athlete object as a parameter and returns an HTML fragment with the athlete's information
 const createHtml = (athlete) => {
     // Extracts data from the 'response' object for the athlete
-    const extractFrom = data.response.data[athlete];
+  //   const { firstName, surname, id, races } = athlete
+  // const [{ date: dateAsString, time: timeAsArray }] = [...races.reverse()]
+  //   const extractFrom = data.response.data[athlete];
   
     const firstName = extractFrom.firstName;
     
@@ -131,6 +133,6 @@ const createHtml = (athlete) => {
     return fragment;
   }
   
-  //[NM372], [SV782] = data
+  
   document.querySelector('[data-athlete = "NM372"]').appendChild(createHtml('NM372'));
   document.querySelector('[data-athlete = "SV782"]').appendChild(createHtml('SV782'));
