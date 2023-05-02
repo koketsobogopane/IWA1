@@ -21,9 +21,8 @@ export const createOrderHtml = (order) => {
     const minutes = created.getMinutes().toString().padStart(2, '0')
 
     element.innerHTML = /* html */ `
-      <div class = "order">
+      <div class = "order" data-order data-id="${id}">
         <div class="order__title" data-order-title>${title}</div>
-        
         <dl class="order__details">
             <div class="order__row">
                 <dt>Table:</dt>

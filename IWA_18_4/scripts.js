@@ -1,5 +1,6 @@
 import { html, createOrderHtml, updateDraggingHtml, moveToColumn } from "./view.js";
 import { createOrderData, updateDragging } from "./data.js";
+let orderExists = false
 /**
  * A handler that fires when a user drags over any element inside a column. In
  * order to determine which column the user is dragging over the entire event
@@ -30,49 +31,113 @@ const handleDragOver = (event) => {
 }
 
 const handleDragStart = (event) => {
-    updateDragging()
-    updateDraggingHtml()
-    handleDragOver()
-    moveToColumn()
+      
 }
+
 const handleDragEnd = (event) => {
-    updateDragging()
-    updateDraggingHtml()
-    handleDragOver()
-    moveToColumn()
-}
-const handleHelpToggle = (event) => {html.help.overlay.style.display = 'block'}
-const handleHelpToggleOff = (event) => {html.help.overlay.style.display = ''}
-const handleAddToggle = (event) => {html.add.overlay.style.display = 'block'}
-const handleAddToggleOff = () => {
-    html.add.overlay.style.display = ''
-}
+    moveToColumn(document.querySelector('[data-id]').getAttribute('data-id'), )
+};
+
+let ishelpVisible = false 
+const handleHelpToggle = (event) => {
+    if (ishelpVisible) {
+        html.help.overlay.style.display = ''
+        ishelpVisible = false;
+      } else {
+        html.help.overlay.style.display = 'block'
+        ishelpVisible = true;
+      }
+};
+
+let isAddVisible = false
+const handleAddToggle = (event) => {
+    if (isAddVisible) {
+        html.add.form.reset()
+        html.add.overlay.style.display = ''
+        isAddVisible = false;
+      } else {
+        html.add.overlay.style.display = 'block'
+        isAddVisible = true;
+      }
+};
+
 const handleAddSubmit = (event) => {
     event.preventDefault()
     const order = {
         title: html.add.title.value,
         table: html.add.table.value,
+        column: 'ordered'
     }
   let orderData = createOrderData(order)
   html.add.overlay.style.display = ''
-  const bbb = createOrderHtml(orderData)
-  const customerOrder = html.other.grid.querySelector('[data-column="ordered"]')
-  customerOrder.innerHTML = bbb.innerHTML
+  const resentOrder = createOrderHtml(orderData)
+  const customerOrder = html.other.grid.querySelector(`[data-column="${orderData.column}"]`)
+  orderExists = true
+  customerOrder.innerHTML += resentOrder.innerHTML
+  html.add.form.reset()
+  customerOrder.setAttribute('draggable', true)
 }
-const handleEditToggle = (event) => {}
-const handleEditSubmit = (event) => {}
-const handleDelete = (event) => {}
 
-html.add.cancel.addEventListener('click', handleAddToggleOff)
+
+
+let isEditVisble = false; 
+const handleEditToggle = (event) => {
+if (orderExists === true) {
+    if (isEditVisble) {
+    html.edit.form.reset()
+    html.edit.overlay.style.display = ''
+    isEditVisble = false;
+   } else {
+    html.edit.overlay.style.display = 'block'
+    isEditVisble = true;
+   }  
+}
+
+}
+
+const handleEditSubmit = (event) => {
+    event.preventDefault()
+    html.edit.overlay.style.display = ''
+    if (orderExists === true){
+
+        const orderEdit = {
+            title: html.edit.title.value,
+            table: html.edit.table.value,
+            column: html.edit.column.value
+        }
+        //const editData = createOrderData(orderEdit)
+        const previousOrdertemplate = {
+            title: document.querySelector('[data-order] [data-order-title]'),
+            table: document.querySelector('[data-order] dl.order__details div.order__row [data-order-table] '),
+        }
+        
+         previousOrdertemplate.title.innerHTML = orderEdit.title
+        previousOrdertemplate.table.innerHTML = orderEdit.table
+        moveToColumn(document.querySelector('[data-id]').getAttribute('data-id'), orderEdit.column)
+        
+    } else {
+        console.error ('there is no order to change!')
+    }
+}
+
+const handleDelete = (event) => {
+    document.querySelector('[data-order]').remove() 
+    orderExists = false
+    html.edit.overlay.style.display = ''
+    html.edit.form.reset()
+}
+
+html.add.cancel.addEventListener('click', handleAddToggle)
 html.other.add.addEventListener('click', handleAddToggle)
 html.add.form.addEventListener('submit', handleAddSubmit)
 
-// html.other.grid.addEventListener('click', handleEditToggle)
-// html.edit.cancel.addEventListener('click', handleEditToggle)
-// html.edit.form.addEventListener('submit', handleEditSubmit)
-// html.edit.delete.addEventListener('click', handleDelete)
 
-html.help.cancel.addEventListener('click', handleHelpToggleOff)
+html.other.grid.addEventListener('click', handleEditToggle)
+html.edit.cancel.addEventListener('click', handleEditToggle)
+html.edit.form.addEventListener('submit', handleEditSubmit)
+html.edit.delete.addEventListener('click', handleDelete)
+
+html.help.cancel.addEventListener('click', handleHelpToggle)
 html.other.help.addEventListener('click', handleHelpToggle)
 
 for (const htmlColumn of Object.values(html.columns)) {
