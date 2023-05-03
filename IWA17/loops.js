@@ -1,4 +1,5 @@
 // scripts.js
+/**a calendar that automatically calculates the current month and day and displays all dates in a grid format. */
 
 const MONTHS = [
   'January',
@@ -27,7 +28,14 @@ const createArray = (length) => {
   }
   return result 
 }
-
+/**
+ * 
+ * This function creates the data for the calender using loops. 
+ * The function uses a for loop nested in another for loop to create a two dimensional storage that stores the days by the weeks in a month. 
+ * This means it should automatically update to check the month,which day does the month starts in and also end in. 
+ * Fixes: I correted the syntax error found, restructured the code to offer more redability 
+ * 
+ */
 const createData = () => {
 
   const current = new Date()
@@ -58,10 +66,12 @@ const createData = () => {
           });
       }
    }
-   console.log (value)
    return value
 }
-
+/**
+ * 
+ * This function creates the a cell using template literal syntax 
+ */
 const addCell = ( classString, value) => {
   const result = /* html */ `
       <td class = '${classString}'>
@@ -71,7 +81,11 @@ const addCell = ( classString, value) => {
   `
   return result
 }
-
+/**
+ * 
+ * This function creates the calender table using almost the same logic as the "createData" function.
+ * It makes use of the "addCell" function to customize each cell accordingly.
+ */
 const createHtml = (data) => {
   let result = ''
 
@@ -98,6 +112,7 @@ const createHtml = (data) => {
   }
  return result
 }
+/**I would want to have the number of weeks change according to the number of weeks of each month. I would like to also find a way to highlight the holidays. */
 
 // Only edit above
 

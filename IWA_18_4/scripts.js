@@ -1,3 +1,7 @@
+/**Kitchen express: a product that will be sold to restaurants to help them track customer orders from 
+ * the moment they are taken by a waiter until they are finally served to the customer. It also records 
+ * the table number and the exact time that the order was created.*/
+
 import { html, createOrderHtml, updateDraggingHtml, moveToColumn } from "./view.js";
 import { createOrderData, updateDragging } from "./data.js";
 let orderExists = false
@@ -35,7 +39,6 @@ const handleDragStart = (event) => {
 }
 
 const handleDragEnd = (event) => {
-    moveToColumn(document.querySelector('[data-id]').getAttribute('data-id'), )
 };
 
 let ishelpVisible = false 
@@ -105,7 +108,7 @@ const handleEditSubmit = (event) => {
             table: html.edit.table.value,
             column: html.edit.column.value
         }
-        //const editData = createOrderData(orderEdit)
+        
         const previousOrdertemplate = {
             title: document.querySelector('[data-order] [data-order-title]'),
             table: document.querySelector('[data-order] dl.order__details div.order__row [data-order-table] '),
