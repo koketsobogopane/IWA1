@@ -85,12 +85,13 @@ const handleAddSubmit = (event) => {
 
 let isEditVisble = false; 
 const handleEditToggle = (event) => {
-if (orderExists === true) {
+if (event.target.className === 'order' || isEditVisble === true) {
     if (isEditVisble) {
     html.edit.form.reset()
     html.edit.overlay.style.display = ''
     isEditVisble = false;
    } else {
+    html.edit.overlay.id = event.target.id
     html.edit.overlay.style.display = 'block'
     isEditVisble = true;
    }  
@@ -102,21 +103,22 @@ const handleEditSubmit = (event) => {
     event.preventDefault()
     html.edit.overlay.style.display = ''
     if (orderExists === true){
+console.log (event.target.id)
+        // const orderEdit = {
+        //     title: html.edit.title.value,
+        //     table: html.edit.table.value,
+        //     column: html.edit.column.value
+        // }
 
-        const orderEdit = {
-            title: html.edit.title.value,
-            table: html.edit.table.value,
-            column: html.edit.column.value
-        }
         
-        const previousOrdertemplate = {
-            title: document.querySelector('[data-order] [data-order-title]'),
-            table: document.querySelector('[data-order] dl.order__details div.order__row [data-order-table] '),
-        }
+        // const previousOrdertemplate = {
+        //     title: document.querySelector(`#${event.target.id} [data-order-title]`),
+        //     table: document.querySelector(`#${event.target.id} dl.order__details div.order__row [data-order-table] `),
+        // }
         
-         previousOrdertemplate.title.innerHTML = orderEdit.title
-        previousOrdertemplate.table.innerHTML = orderEdit.table
-        moveToColumn(document.querySelector('[data-id]').getAttribute('data-id'), orderEdit.column)
+        //  previousOrdertemplate.title.innerHTML = orderEdit.title
+        // previousOrdertemplate.table.innerHTML = orderEdit.table
+        // moveToColumn(document.querySelector('[data-id]').getAttribute('data-id'), orderEdit.column)
         
     } else {
         console.error ('there is no order to change!')
