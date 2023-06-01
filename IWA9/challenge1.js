@@ -1,3 +1,10 @@
+/**
+ * Calculates the total remaining balance after deducting expenses from the salary.
+ * @param {number} salary - The base salary amount.
+ * @param {string} lodging - The type of lodging.
+ * @param {string} size - The size of the lodging.
+ * @returns {number} The total remaining balance.
+ */
 const salary = 4000;
 const lodging = 'apartment'
 const size = 'large'
