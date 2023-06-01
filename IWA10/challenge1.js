@@ -1,5 +1,12 @@
 const currentYear = new Date().getFullYear()
 
+
+
+
+/**
+ *@typedef {Object} holidays - An object that stores a list of holidays with each containing its info
+ *@prop {number} IndexOfHoliday - The index at which the holidays is on.
+*/
 const holidays = {
     0: {
         id: 0,
